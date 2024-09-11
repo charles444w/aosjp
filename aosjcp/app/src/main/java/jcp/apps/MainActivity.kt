@@ -63,8 +63,8 @@ import jcp.apps.t.TransactionDataModel
 import jcp.apps.ui.theme.AosjcpTheme
 import java.text.NumberFormat
 import java.util.Locale
-
-
+//2024 UI Trends
+//https://dribbble.com/tags/2024-ui-trends
 class MainActivity : ComponentActivity() {
     var number: Int = 100000000
     var number2: Int = 100000
