@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -24,13 +26,22 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Card
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
+import androidx.compose.material.AlertDialog
+import androidx.compose.material.BottomAppBar
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Card
+import androidx.compose.material.FabPosition
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.material.icons.Icons
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -58,11 +69,16 @@ import androidx.media3.common.MediaItem
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import jcp.apps.t.TransactionDataModel
 import jcp.apps.ui.theme.AosjcpTheme
 import java.text.NumberFormat
 import java.util.Locale
+
+//Bottom Navigation With Docked FAB in Jetpack Compose
+//https://proandroiddev.com/bottom-navigation-with-docked-fab-in-jetpack-compose-f1ba3cb3771b
+
 //2024 UI Trends
 //https://dribbble.com/tags/2024-ui-trends
 class MainActivity : ComponentActivity() {
@@ -98,6 +114,7 @@ class MainActivity : ComponentActivity() {
             AosjcpTheme {
                 //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
                     val shouldShowDialog = remember { mutableStateOf(false) } // 1
                     Greeting(
                         name = "Android",
@@ -110,6 +127,158 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+@Composable
+fun BottomBarWithFabDem() {
+    val navController = rememberNavController()
+    Scaffold(
+        topBar = {
+
+        },
+        bottomBar = {
+            BottomAppBar(
+                modifier = Modifier
+                    .height(65.dp)
+                    .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
+                cutoutShape = CircleShape,
+                //backgroundColor = Color.White,
+                elevation = 22.dp
+            ) {
+                BottomNav()
+            }
+        }
+        ,
+        floatingActionButtonPosition = FabPosition.Center,
+        isFloatingActionButtonDocked = true,
+        floatingActionButton = {
+            FloatingActionButton(
+                shape = CircleShape,
+                onClick = {
+                },
+                contentColor = Color.White
+            ) {
+                Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)
+            }
+        },
+        content = { a ->
+            HomeScreen(a)
+        }
+
+
+    )
+}
+
+@Composable
+fun BottomNav() {
+
+    BottomNavigation(
+        modifier = Modifier
+            .padding(12.dp, 0.dp, 12.dp, 0.dp)
+            .height(100.dp),
+        //backgroundColor = Color.White,
+        elevation = 0.dp
+    ) {
+        BottomNavigationItem(
+            icon = {
+                Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)
+            },
+            label = {
+                Text(
+                    text = "1",
+                    //color = Color.Gray
+                )
+            },
+            selected = true,
+            selectedContentColor = Color(R.color.purple_700),
+            unselectedContentColor = Color.White.copy(alpha = 0.4f),
+            onClick = {
+
+            }
+        )
+        BottomNavigationItem(
+            icon = {
+                Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)
+            },
+            label = {
+                Text(
+                    text = "1",
+                    //color = Color.Gray
+                )
+            },
+            selected = true,
+            selectedContentColor = Color(R.color.purple_700),
+            unselectedContentColor = Color.White.copy(alpha = 0.4f),
+            onClick = {
+
+            }
+        )
+    }
+}
+
+
+
+/*@Composable
+fun BottomNavWithDockedFAB() {
+    Scaffold(
+        bottomBar = {
+            BottomNavigation {
+                BottomNavigationItem(
+                    icon = { Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null) },
+                    label = { Text("Home") },
+                    selected = false,
+                    onClick = { *//* Handle navigation *//* }
+                )
+                BottomNavigationItem(
+                    icon = { Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)},
+                    label = { Text("Search") },
+                    selected = false,
+                    onClick = { *//* Handle navigation *//* }
+                )
+                BottomNavigationItem(
+                    icon = { Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null) },
+                    label = { Text("Settings") },
+                    selected = false,
+                    onClick = { *//* Handle navigation *//* }
+                )
+            }
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { *//* Handle FAB click *//* },
+                modifier = Modifier
+                    .padding(16.dp)
+                    .navigationBarsPadding() // To adjust for bottom navigation bar height
+            ) {
+                // Your FAB content, e.g., an icon
+                Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)
+            }
+        },
+        floatingActionButtonPosition = FabPosition.Center // or FabPosition.End based on your design
+    ) { innerPadding ->
+        // Content goes here
+        Box(modifier = Modifier.padding(innerPadding)) {
+            // Main content of the screen
+            Text("Main Content", modifier = Modifier.fillMaxSize())
+        }
+    }
+}*/
+
+@Composable
+fun HomeScreen(PaddingValues: PaddingValues) {
+    Text("Home Screen")
+}
+
+@Composable
+fun FavoritesScreen() {
+    Text("Favorites Screen")
+}
+
+@Composable
+fun ProfileScreen() {
+    Text("Profile Screen")
+}
+
+
 
 @Composable
 fun MyAlertDialog(shouldShowDialog: MutableState<Boolean>) {
@@ -379,7 +548,7 @@ fun customListView(context: Context) {
         itemsIndexed(courseList[0].videoDetails) { index, item ->
             Column(
                 modifier = Modifier.background(
-                    MaterialTheme.colorScheme.background,
+                    MaterialTheme.colors.background,
                     RoundedCornerShape(0.dp)
                 )
             )
@@ -483,7 +652,8 @@ fun Greeting(
     //setting screen
     var items =
         listOf(SettingModel(selected = true, lang = "简体中文"), SettingModel(lang = "繁體中文"))
-    SettingScreen()
+    BottomBarWithFabDem()
+   // SettingScreen()
 
     //main screen
     /*    Box(
