@@ -71,6 +71,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
+import jcp.apps.App.Companion.applicationContext
 import jcp.apps.t.TransactionDataModel
 import jcp.apps.ui.theme.AosjcpTheme
 import java.text.NumberFormat
@@ -112,19 +113,24 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             AosjcpTheme {
-                //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
-                    val shouldShowDialog = remember { mutableStateOf(false) } // 1
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding),
-                        shouldShowDialog,
-                        context = this
-                    )
-                }
+                //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
+                MainScreen()
             }
         }
+    }
+}
+@Composable
+fun MainScreen() {
+    applicationContext()
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
+        val shouldShowDialog = remember { mutableStateOf(false) } // 1
+        Greeting(
+            name = "Android",
+            modifier = Modifier.padding(innerPadding),
+            shouldShowDialog
+        )
     }
 }
 
@@ -647,7 +653,6 @@ fun Greeting(
     name: String,
     modifier: Modifier = Modifier,
     shouldShowDialog: MutableState<Boolean>,
-    context: Context
 ) {
     //setting screen
     var items =
@@ -725,6 +730,7 @@ fun ShowDialogNoNetworking(shouldShowDialog: MutableState<Boolean>) {
 @Composable
 fun GreetingPreview() {
     AosjcpTheme {
+        MainScreen()
         // Greeting("Android")
     }
 }
