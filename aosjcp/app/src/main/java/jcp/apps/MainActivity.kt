@@ -82,31 +82,11 @@ import java.util.Locale
 //2024 UI Trends
 //https://dribbble.com/tags/2024-ui-trends
 class MainActivity : ComponentActivity() {
-    var number: Int = 100000000
-    var number2: Int = 100000
-    var str: String = NumberFormat.getNumberInstance(Locale.US).format(number) //str = 1,000,000,000
-    var str2: String = NumberFormat.getNumberInstance(Locale.US).format(number2) //str = 1,000,000,000
-    fun convertPixelsToDp(px: Float, context: Context): Float {
-        return px / (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
-    }
 
-    fun dpToPx(dp: Int): Int {
-        val scale = resources.displayMetrics.density
-        return (dp * scale + 0.5f).toInt()
-    }
-
-    fun convertDpToPixel(dp: Float, context: Context): Float {
-        return dp * (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
-    }
-    fun dp2px(context: Context, dpVal: Float): Int {
-        val scale = context.resources.displayMetrics.density
-        return (dpVal * scale+0.5F).toInt()
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-         Log.d("charles_log","s1:${str} , s2:${str2}")
         //  val dataStore: DataStore<Preferences> = baseContext.createDataStore(name = "my_preferences")
 
         setContent {
