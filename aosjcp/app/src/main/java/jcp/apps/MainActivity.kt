@@ -12,6 +12,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -32,12 +33,15 @@ import androidx.compose.material.AlertDialog
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.SnackbarHost
+import androidx.compose.material.SnackbarHostState
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
@@ -50,6 +54,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -74,6 +79,8 @@ import coil.compose.AsyncImage
 import jcp.apps.App.Companion.applicationContext
 import jcp.apps.t.TransactionDataModel
 import jcp.apps.ui.theme.AosjcpTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -120,41 +127,61 @@ fun MainScreen() {
 @Composable
 fun BottomBarWithFabDem() {
     val navController = rememberNavController()
-    Scaffold(
-        topBar = {
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope: CoroutineScope = rememberCoroutineScope()
 
-        },
-        bottomBar = {
-            BottomAppBar(
-                modifier = Modifier
-                    .height(65.dp)
-                    .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
-                cutoutShape = CircleShape,
-                //backgroundColor = Color.White,
-                elevation = 22.dp
-            ) {
-                BottomNav()
+    Box {
+        Scaffold(
+            topBar = {
+
+            },
+            bottomBar = {
+                BottomAppBar(
+                    modifier = Modifier
+                        .height(65.dp)
+                        .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
+                    cutoutShape = CircleShape,
+                    //backgroundColor = Color.White,
+                    elevation = 22.dp
+                ) {
+                    BottomNav()
+                }
             }
-        }
-        ,
-        floatingActionButtonPosition = FabPosition.Center,
-        isFloatingActionButtonDocked = true,
-        floatingActionButton = {
-            FloatingActionButton(
-                shape = CircleShape,
-                onClick = {
-                },
-                contentColor = Color.White
-            ) {
-                Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)
-            }
-        },
-        content = { a ->
-            HomeScreen(a)
-        }
+            ,
+            floatingActionButtonPosition = FabPosition.Center,
+            isFloatingActionButtonDocked = true,
+            floatingActionButton = {
+                FloatingActionButton(
+                    shape = CircleShape,
+                    onClick = {
+                    },
+                    contentColor = Color.White
+                ) {
+                    Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)
+                }
+            },
+            content = { a ->
+                HomeScreen(a)
+                Button(onClick = {
 
 
-    )
+                    coroutineScope.launch {
+
+                        // Show Snackbar when FAB is clicked
+                        snackbarHostState.showSnackbar("Snackbar message!")
+                    }
+
+                }) {
+
+                }
+            })
+        SnackbarHost(
+            hostState = snackbarHostState,
+            modifier = Modifier.align(Alignment.BottomCenter)
+        )
+    }
+
+
 }
 
 @Composable
@@ -254,7 +281,11 @@ fun BottomNavWithDockedFAB() {
 
 @Composable
 fun HomeScreen(PaddingValues: PaddingValues) {
-    Text("Home Screen")
+    Column {
+        Text("Home Screen")
+
+    }
+
 }
 
 @Composable
@@ -641,7 +672,7 @@ fun Greeting(
     var items =
         listOf(SettingModel(selected = true, lang = "简体中文"), SettingModel(lang = "繁體中文"))
     BottomBarWithFabDem()
-   // SettingScreen()
+    // SettingScreen()
 
     //main screen
     /*    Box(
