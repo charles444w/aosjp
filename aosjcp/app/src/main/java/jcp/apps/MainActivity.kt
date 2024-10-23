@@ -77,6 +77,9 @@ import jcp.apps.ui.theme.AosjcpTheme
 import java.text.NumberFormat
 import java.util.Locale
 
+//useful-kotlin-extensions
+//https://github.com/Mohsenabn78/useful-kotlin-extensions/tree/main
+
 //Bottom Navigation With Docked FAB in Jetpack Compose
 //https://proandroiddev.com/bottom-navigation-with-docked-fab-in-jetpack-compose-f1ba3cb3771b
 
