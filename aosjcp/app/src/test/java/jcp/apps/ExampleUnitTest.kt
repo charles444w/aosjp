@@ -12,6 +12,8 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        val r = "111,222,333".filter { it != ',' }
+        println("resutl:$r")
+       // assertEquals(4, 2 + 2)
     }
 }

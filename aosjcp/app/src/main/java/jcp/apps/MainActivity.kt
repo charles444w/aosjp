@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
+import android.view.View
+import android.view.Window
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -77,6 +79,7 @@ import androidx.media3.ui.PlayerView
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import jcp.apps.App.Companion.applicationContext
+import jcp.apps.aosd.home.ui.MainScreen
 import jcp.apps.t.TransactionDataModel
 import jcp.apps.ui.theme.AosjcpTheme
 import kotlinx.coroutines.CoroutineScope
@@ -96,21 +99,30 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-
+       // enableEdgeToEdge()
+     //   hideSystemUI(this)
         //  val dataStore: DataStore<Preferences> = baseContext.createDataStore(name = "my_preferences")
 
         setContent {
 
             AosjcpTheme {
 
-                //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
                 MainScreen()
+                //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
+              //  MainScreen()
             }
         }
     }
 }
-@Composable
+/*private fun hideSystemUI(ac: MainActivity) {
+    ac.window.decorView.systemUiVisibility = (
+            View.SYSTEM_UI_FLAG_FULLSCREEN
+                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            )
+}*/
+
+/*@Composable
 fun MainScreen() {
     applicationContext()
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -122,7 +134,7 @@ fun MainScreen() {
             shouldShowDialog
         )
     }
-}
+}*/
 
 @Composable
 fun BottomBarWithFabDem() {
@@ -161,7 +173,7 @@ fun BottomBarWithFabDem() {
                 }
             },
             content = { a ->
-                HomeScreen(a)
+              //  HomeScreen(a)
                 Button(onClick = {
 
 
@@ -279,14 +291,14 @@ fun BottomNavWithDockedFAB() {
     }
 }*/
 
-@Composable
+/*@Composable
 fun HomeScreen(PaddingValues: PaddingValues) {
     Column {
         Text("Home Screen")
 
     }
 
-}
+}*/
 
 @Composable
 fun FavoritesScreen() {
