@@ -16,7 +16,7 @@ import jcp.apps.Greeting
 @Composable
 fun MainScreen(modifier: androidx.compose.ui.Modifier = androidx.compose.ui.Modifier) {
     Column {
-        Scaffold(modifier = androidx.compose.ui.Modifier.fillMaxSize().background(color = Color.DarkGray)) { innerPadding ->
+        Scaffold(modifier = androidx.compose.ui.Modifier.fillMaxSize().background(color = Color.DarkGray)) { _ ->
            Column(modifier = Modifier.fillMaxSize().background(color = Color.DarkGray)) {
                 Text(text = "Home Screen")
             }
