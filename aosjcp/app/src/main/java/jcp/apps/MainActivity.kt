@@ -80,6 +80,7 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import jcp.apps.App.Companion.applicationContext
 import jcp.apps.aosd.home.ui.MainScreen
+import jcp.apps.base.AppToolBar
 import jcp.apps.t.TransactionDataModel
 import jcp.apps.ui.theme.AosjcpTheme
 import kotlinx.coroutines.CoroutineScope
@@ -145,7 +146,6 @@ fun BottomBarWithFabDem() {
     Box {
         Scaffold(
             topBar = {
-
             },
             bottomBar = {
                 BottomAppBar(
@@ -174,6 +174,7 @@ fun BottomBarWithFabDem() {
             },
             content = { a ->
               //  HomeScreen(a)
+
                 Button(onClick = {
 
 

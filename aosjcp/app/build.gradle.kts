@@ -74,4 +74,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.glide.compose)
     implementation(libs.androidx.navigation)
+    implementation(libs.androidx.navigation)
 }
