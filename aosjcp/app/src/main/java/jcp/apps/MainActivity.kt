@@ -140,7 +140,7 @@ fun MainScreen() {
 
 @Composable
 fun BottomBarWithFabDem() {
-    //val navController = rememberNavController()
+    val navController = rememberNavController()
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
 
