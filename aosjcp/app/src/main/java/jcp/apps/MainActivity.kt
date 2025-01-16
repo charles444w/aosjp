@@ -108,8 +108,7 @@ class MainActivity : ComponentActivity() {
 
             AosjcpTheme {
 
-                //coin 2
-                //setting 2
+                //main 4
                 MainScreen()
                 //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
               //  MainScreen()
