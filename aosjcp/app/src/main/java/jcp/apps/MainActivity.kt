@@ -103,11 +103,12 @@ class MainActivity : ComponentActivity() {
        // enableEdgeToEdge()
      //   hideSystemUI(this)
         //  val dataStore: DataStore<Preferences> = baseContext.createDataStore(name = "my_preferences")
-
+       val a = 60.dp
         setContent {
 
             AosjcpTheme {
 
+                //setting 1
                 MainScreen()
                 //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
               //  MainScreen()
