@@ -108,7 +108,7 @@ class MainActivity : ComponentActivity() {
 
             AosjcpTheme {
 
-                //main 1
+                //main 556
                 MainScreen()
                 //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
               //  MainScreen()
