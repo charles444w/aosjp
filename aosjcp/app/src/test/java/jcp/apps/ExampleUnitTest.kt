@@ -12,8 +12,9 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
+       val list = listOf("","")
         val r = "111,222,333".filter { it != ',' }
-        println("resutl:$r")
+        println("resutl:${list.size}")
        // assertEquals(4, 2 + 2)
     }
 }
