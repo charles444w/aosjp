@@ -96,6 +96,14 @@ import java.util.Locale
 //2024 UI Trends
 //https://dribbble.com/tags/2024-ui-trends
 class MainActivity : ComponentActivity() {
+    //is setting_test 2
+    var number: Int = 100000000
+    var number2: Int = 100000
+    var str: String = NumberFormat.getNumberInstance(Locale.US).format(number) //str = 1,000,000,000
+    var str2: String = NumberFormat.getNumberInstance(Locale.US).format(number2) //str = 1,000,000,000
+    fun convertPixelsToDp(px: Float, context: Context): Float {
+        return px / (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
