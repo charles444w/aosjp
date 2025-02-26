@@ -20,7 +20,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.datastore.preferences.core.stringPreferencesKey
-import jcp.apps.Greeting
 import jcp.apps.base.AppToolBar
 import jcp.apps.core.DP
 import jcp.apps.datastore.PreferencesManager
