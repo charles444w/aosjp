@@ -56,7 +56,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -79,16 +78,10 @@ import androidx.media3.ui.PlayerView
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import jcp.apps.App.Companion.applicationContext
-import jcp.apps.aosd.home.ui.MainScreen
 import jcp.apps.t.TransactionDataModel
 import jcp.apps.ui.theme.AosjcpTheme
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import java.text.NumberFormat
 import java.util.Locale
-
-//useful-kotlin-extensions
-//https://github.com/Mohsenabn78/useful-kotlin-extensions/tree/main
 
 //Bottom Navigation With Docked FAB in Jetpack Compose
 //https://proandroiddev.com/bottom-navigation-with-docked-fab-in-jetpack-compose-f1ba3cb3771b
@@ -96,34 +89,34 @@ import java.util.Locale
 //2024 UI Trends
 //https://dribbble.com/tags/2024-ui-trends
 class MainActivity : ComponentActivity() {
+    // update to setting_test2_by_dev_main
+    var number: Int = 100000000
+    var number2: Int = 100000
+    var str: String = NumberFormat.getNumberInstance(Locale.US).format(number) //str = 1,000,000,000
+    var str2: String = NumberFormat.getNumberInstance(Locale.US).format(number2) //str = 1,000,000,000
+    fun convertPixelsToDp(px: Float, context: Context): Float {
+        return px / (context.resources.displayMetrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    }
 
     //main_dev 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // enableEdgeToEdge()
-     //   hideSystemUI(this)
+        enableEdgeToEdge()
+
+         Log.d("charles_log","s1:${str} , s2:${str2}")
         //  val dataStore: DataStore<Preferences> = baseContext.createDataStore(name = "my_preferences")
 
         setContent {
 
             AosjcpTheme {
 
-                MainScreen()
                 //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
-              //  MainScreen()
+                MainScreen()
             }
         }
     }
 }
-/*private fun hideSystemUI(ac: MainActivity) {
-    ac.window.decorView.systemUiVisibility = (
-            View.SYSTEM_UI_FLAG_FULLSCREEN
-                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            )
-}*/
-
-/*@Composable
+@Composable
 fun MainScreen() {
     applicationContext()
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -135,66 +128,46 @@ fun MainScreen() {
             shouldShowDialog
         )
     }
-}*/
+}
 
 @Composable
 fun BottomBarWithFabDem() {
     val navController = rememberNavController()
-    val snackbarHostState = remember { SnackbarHostState() }
-    val coroutineScope: CoroutineScope = rememberCoroutineScope()
+    Scaffold(
+        topBar = {
 
-    Box {
-        Scaffold(
-            topBar = {
-
-            },
-            bottomBar = {
-                BottomAppBar(
-                    modifier = Modifier
-                        .height(65.dp)
-                        .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
-                    cutoutShape = CircleShape,
-                    //backgroundColor = Color.White,
-                    elevation = 22.dp
-                ) {
-                    BottomNav()
-                }
+        },
+        bottomBar = {
+            BottomAppBar(
+                modifier = Modifier
+                    .height(65.dp)
+                    .clip(RoundedCornerShape(15.dp, 15.dp, 0.dp, 0.dp)),
+                cutoutShape = CircleShape,
+                //backgroundColor = Color.White,
+                elevation = 22.dp
+            ) {
+                BottomNav()
             }
-            ,
-            floatingActionButtonPosition = FabPosition.Center,
-            isFloatingActionButtonDocked = true,
-            floatingActionButton = {
-                FloatingActionButton(
-                    shape = CircleShape,
-                    onClick = {
-                    },
-                    contentColor = Color.White
-                ) {
-                    Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)
-                }
-            },
-            content = { a ->
-              //  HomeScreen(a)
-                Button(onClick = {
+        }
+        ,
+        floatingActionButtonPosition = FabPosition.Center,
+        isFloatingActionButtonDocked = true,
+        floatingActionButton = {
+            FloatingActionButton(
+                shape = CircleShape,
+                onClick = {
+                },
+                contentColor = Color.White
+            ) {
+                Icon(painterResource(R.drawable.ic_launcher_foreground), contentDescription = null)
+            }
+        },
+        content = { a ->
+            HomeScreen(a)
+        }
 
 
-                    coroutineScope.launch {
-
-                        // Show Snackbar when FAB is clicked
-                        snackbarHostState.showSnackbar("Snackbar message!")
-                    }
-
-                }) {
-
-                }
-            })
-        SnackbarHost(
-            hostState = snackbarHostState,
-            modifier = Modifier.align(Alignment.BottomCenter)
-        )
-    }
-
-
+    )
 }
 
 @Composable
@@ -292,14 +265,10 @@ fun BottomNavWithDockedFAB() {
     }
 }*/
 
-/*@Composable
+@Composable
 fun HomeScreen(PaddingValues: PaddingValues) {
-    Column {
-        Text("Home Screen")
-
-    }
-
-}*/
+    Text("Home Screen")
+}
 
 @Composable
 fun FavoritesScreen() {
@@ -685,7 +654,7 @@ fun Greeting(
     var items =
         listOf(SettingModel(selected = true, lang = "简体中文"), SettingModel(lang = "繁體中文"))
     BottomBarWithFabDem()
-    // SettingScreen()
+   // SettingScreen()
 
     //main screen
     /*    Box(
