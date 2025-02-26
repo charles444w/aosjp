@@ -83,6 +83,7 @@ import java.util.Locale
 //2024 UI Trends
 //https://dribbble.com/tags/2024-ui-trends
 class MainActivity : ComponentActivity() {
+    //ccc
     var number: Int = 100000000
     var number2: Int = 100000
     var str: String = NumberFormat.getNumberInstance(Locale.US).format(number) //str = 1,000,000,000
