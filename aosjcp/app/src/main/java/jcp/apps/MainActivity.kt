@@ -97,6 +97,7 @@ import java.util.Locale
 //https://dribbble.com/tags/2024-ui-trends
 class MainActivity : ComponentActivity() {
 
+    //main_dev 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        // enableEdgeToEdge()
