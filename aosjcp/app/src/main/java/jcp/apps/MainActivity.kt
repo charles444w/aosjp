@@ -110,6 +110,7 @@ class MainActivity : ComponentActivity() {
 
                 //base app 2
                 MainScreen()
+
                 //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
               //  MainScreen()
             }

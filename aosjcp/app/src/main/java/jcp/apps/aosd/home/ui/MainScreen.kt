@@ -22,40 +22,47 @@ import jcp.apps.core.DP
 import androidx.compose.runtime.*
 import jcp.apps.jptask.MarqueeTextView
 import jcp.apps.jptask.MarqueeTextViewExample
+import jcp.apps.jptask.MovableFab
 
 
 //https://play.google.com/store/apps/details?id=com.softin.ledbanner&hl=zh_HK
 @Composable
 fun MainScreen(modifier: androidx.compose.ui.Modifier = androidx.compose.ui.Modifier) {
     var isPlaying by remember { mutableStateOf(true) }
-    Column {
+    Box {
+
         Column {
 
-
-            MarqueeTextViewExample(
-            )
+            Column {
 
 
+                MarqueeTextViewExample(
+                )
 
-        }
-    /*    MarqueeTextWithToggle(
-            text = "Welcome to the Marquee Animation in Jetpack Compose! ",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        )*/
 
-        Box(modifier = Modifier.height(60.dp))
-        Scaffold(modifier = androidx.compose.ui.Modifier
-            .fillMaxSize()
-            .background(color = Color.DarkGray)) { _ ->
-           Column(modifier = Modifier
-               .fillMaxSize()
-               .background(color = Color.DarkGray)) {
-               AppToolBar()
-                Text(text = "Home Screen")
+
             }
-           // HomeScreen(modifier = Modifier.fillMaxSize().padding(top = innerPadding.calculateTopPadding(), bottom = innerPadding.calculateBottomPadding()))
+            /*    MarqueeTextWithToggle(
+                    text = "Welcome to the Marquee Animation in Jetpack Compose! ",
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
+                )*/
+
+            Box(modifier = Modifier.height(60.dp))
+            Scaffold(modifier = androidx.compose.ui.Modifier
+                .fillMaxSize()
+                .background(color = Color.DarkGray)) { _ ->
+                Column(modifier = Modifier
+                    .fillMaxSize()
+                    .background(color = Color.DarkGray)) {
+                    AppToolBar()
+                    Text(text = "Home Screen")
+                }
+                // HomeScreen(modifier = Modifier.fillMaxSize().padding(top = innerPadding.calculateTopPadding(), bottom = innerPadding.calculateBottomPadding()))
+            }
         }
+        MovableFab()
     }
+
 }
