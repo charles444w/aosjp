@@ -20,6 +20,8 @@ import jcp.apps.Greeting
 import jcp.apps.base.AppToolBar
 import jcp.apps.core.DP
 import androidx.compose.runtime.*
+import jcp.apps.game.FlappyBirdGame
+import jcp.apps.game.WhackAMoleGame
 import jcp.apps.jptask.MarqueeTextView
 import jcp.apps.jptask.MarqueeTextViewExample
 import jcp.apps.jptask.MovableFab
