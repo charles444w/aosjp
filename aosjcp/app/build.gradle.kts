@@ -76,7 +76,7 @@ dependencies {
     implementation(libs.glide.compose)
     implementation(libs.androidx.navigation)
     implementation(libs.androidx.navigation)
-
+    implementation("com.google.android.gms:play-services-ads:23.4.0")
     implementation("io.coil-kt:coil-compose:2.5.0")
 
 }

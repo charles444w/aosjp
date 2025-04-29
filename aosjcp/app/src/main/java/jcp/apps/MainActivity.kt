@@ -79,6 +79,7 @@ import androidx.media3.ui.PlayerView
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import jcp.apps.App.Companion.applicationContext
+import jcp.apps.ads.RewardedVideoAd
 import jcp.apps.aosd.home.ui.MainScreen
 import jcp.apps.base.AppToolBar
 import jcp.apps.t.TransactionDataModel
@@ -109,7 +110,9 @@ class MainActivity : ComponentActivity() {
             AosjcpTheme {
 
                 //base app 2
-                DocumentScanner()
+                RewardedVideoAd(onRewardEarned = {}, onAdFailed = {
+
+                })
 
                 //  val dataStore: DataStore<Preferences> = .createDataStore(name = "my_preferences")
               //  MainScreen()
