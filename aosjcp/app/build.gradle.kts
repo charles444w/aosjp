@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.datastore.preferences)
     implementation(libs.datastore.preferences.core)
+    implementation(libs.play.services.mlkit.document.scanner)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -75,4 +76,7 @@ dependencies {
     implementation(libs.glide.compose)
     implementation(libs.androidx.navigation)
     implementation(libs.androidx.navigation)
+
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
 }
